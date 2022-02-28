@@ -1,15 +1,10 @@
 <?php
 class Product_model extends CI_Model{
-      function get_products($in_stock=false,$cat_id="",$search="", $page = ""){
+      function get_products($cat_id="",$search=""){
             $filter = "";
             $limit = "";
             $page_limit = 10;
-            if($page != ""){
-                $limit .= " limit ".(($page - 1) * $page_limit).",".$page_limit." ";
-            }
-            if($in_stock){
-                $filter .=" and products.in_stock = 1 ";
-            }
+
             if($cat_id!=""){
                 $filter .=" and products.category_id = '".$cat_id."' ";
             }
@@ -99,18 +94,18 @@ class Product_model extends CI_Model{
             $q = $this->db->query("Select * from sale where user_id = '".$user_id."' and status != 3 ORDER BY sale_id DESC");
             return $q->result();
       }
-      function get_sale_orders($filter=""){
-         $sql = "Select distinct sale.*,registers.user_fullname,registers.user_phone,registers.pincode,registers.socity_id,registers.house_no, socity.socity_name, user_location.socity_id, user_location.pincode, user_location.house_no, user_location.receiver_name, user_location.receiver_mobile from sale 
+      function get_sale_orders($filter="", $filter1=""){
+         $sql = "Select distinct sale.*,registers.user_fullname,registers.user_phone,registers.socity_id,registers.house_no, socity.socity_name, user_location.socity_id, user_location.house_no, user_location.receiver_name, user_location.receiver_mobile from sale 
             inner join registers on registers.user_id = sale.user_id
             left outer join user_location on user_location.location_id = sale.location_id
             left outer join socity on socity.socity_id = user_location.socity_id
-            where 1 ".$filter." ORDER BY sale_id DESC";
+            where 1 ".$filter." ORDER BY sale_id DESC ".$filter1;
             $q = $this->db->query($sql);
             return $q->result();
       } 
       
       function get_sale_order_by_id($order_id){
-            $q = $this->db->query("Select distinct sale.*,registers.user_fullname,registers.user_phone,registers.pincode,registers.socity_id,registers.house_no, socity.socity_name, user_location.socity_id, user_location.pincode, user_location.house_no, user_location.receiver_name, user_location.receiver_mobile from sale 
+            $q = $this->db->query("Select distinct sale.*,registers.user_fullname,registers.user_phone,registers.socity_id,registers.house_no, socity.socity_name, user_location.socity_id, user_location.house_no, user_location.receiver_name, user_location.receiver_mobile from sale 
             inner join registers on registers.user_id = sale.user_id
             left outer join user_location on user_location.location_id = sale.location_id
             left outer join socity on socity.socity_id = user_location.socity_id
@@ -132,14 +127,6 @@ class Product_model extends CI_Model{
         return $q->result();
       }
       
-      function get_all_users(){
-         $sql = "Select registers.*, ifnull(sale_order.total_amount, 0) as total_amount,total_orders  from registers 
-            
-            left outer join (Select sum(total_amount) as total_amount, count(sale_id) as total_orders, user_id from sale group by user_id) as sale_order on sale_order.user_id = registers.user_id
-            where 1 order by user_id DESC";
-            $q = $this->db->query($sql);
-            
-            return $q->result();
-      }
+     
 }
 ?>

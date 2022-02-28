@@ -6,24 +6,14 @@ if ( ! function_exists('_is_user_login'))
     {
         $userid = _get_current_user_id($thi);
         $usertype = _get_current_user_type_id($thi);
-         $is_access = _get_user_type_access($thi,$usertype);
         
         if(isset($userid) && $userid!="" && isset($usertype))
         {
-            if($is_access == true){
-                 
-                 return true;
-            }else{
-                $thi->load->view("admin/common/not_access");
-                return false;    
-            }
-            
+            return true;
         }else
         {
-           
             return false;
         }
-
     }   
 }
 if ( ! function_exists('_is_frontend_user_login'))
@@ -33,12 +23,11 @@ if ( ! function_exists('_is_frontend_user_login'))
         $userid = _get_current_user_id($thi);
         $usertype = _get_current_user_type_id($thi);
          
-        if(isset($userid) && $userid!="" && isset($usertype))
+        if(isset($userid) && $userid!="")
         {
                  return true;
         }else
         {
-           
             return false;
         }
 
@@ -54,6 +43,13 @@ if(! function_exists('_get_current_user_name')){
         return $thi->session->userdata("user_name");
     }
 }
+
+if(! function_exists('_get_current_user_socity_id')){
+    function _get_current_user_socity_id($thi){
+        return $thi->session->userdata("socity_id");
+    }
+}
+
 if(! function_exists('_get_current_user_type_id')){
     function _get_current_user_type_id($thi){
         return $thi->session->userdata("user_type_id");

@@ -129,11 +129,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="">Đơn vị tính <span class="text-danger">*</span></label>
-                                        <select name="unit" class="form-control" >
-                                                <option class="gram" value= "gram">Gram</option>
-                                                <option class="kg" value= "kg" >Kg</option>
-                                                <option class="nos" value= "nos">Túi/hộp/bó</option>
-                                            </select>
+                                        <select name="unit" class="form-control">
+                                            <option class="gram" value="gram">Gram</option>
+                                            <option class="kg" value="kg">Kg</option>
+                                            <option class="nos" value="nos">Túi/hộp/bó</option>
+                                        </select>
                                     </div>
 
                                 </div>

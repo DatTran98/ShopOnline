@@ -130,36 +130,36 @@ class Users extends MY_Controller {
            }
     }
     
-    function modify_password($token){
-        $data = array();
-        $q = $this->db->query("Select * from users where varified_token = '".$token."' limit 1");
-        if($q->num_rows() > 0){
-                        $data = array();
-                        $this->load->library('form_validation');
-                        $this->form_validation->set_rules('n_password', 'New password', 'trim|required');
-                        $this->form_validation->set_rules('r_password', 'Re password', 'trim|required|matches[n_password]');
-                        if ($this->form_validation->run() == FALSE) 
-                  		{
-                  		    if($this->form_validation->error_string()!=""){
+    // function modify_password($token){
+    //     $data = array();
+    //     $q = $this->db->query("Select * from users where varified_token = '".$token."' limit 1");
+    //     if($q->num_rows() > 0){
+    //                     $data = array();
+    //                     $this->load->library('form_validation');
+    //                     $this->form_validation->set_rules('n_password', 'New password', 'trim|required');
+    //                     $this->form_validation->set_rules('r_password', 'Re password', 'trim|required|matches[n_password]');
+    //                     if ($this->form_validation->run() == FALSE) 
+    //               		{
+    //               		    if($this->form_validation->error_string()!=""){
                         		  
-                                    $data["response"] = "error";
-                        			$data["error"] = '<div class="alert alert-warning alert-dismissible" role="alert">
-                                                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                  <strong>Warning!</strong> '.$this->form_validation->error_string().'
-                                                </div>';
-                                                }
+    //                                 $data["response"] = "error";
+    //                     			$data["error"] = '<div class="alert alert-warning alert-dismissible" role="alert">
+    //                                               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    //                                               <strong>Warning!</strong> '.$this->form_validation->error_string().'
+    //                                             </div>';
+    //                                             }
                                     
-                  		}else
-                        {
-                                    $user = $q->row();
-                                   $this->db->update("users",array("user_password"=>md5($this->input->post("n_password")),"varified_token"=>""),array("user_id"=>$user->user_id));
-                                   $data["success"] = true;                             
+    //               		}else
+    //                     {
+    //                                 $user = $q->row();
+    //                                $this->db->update("users",array("user_password"=>md5($this->input->post("n_password")),"varified_token"=>""),array("user_id"=>$user->user_id));
+    //                                $data["success"] = true;                             
                                                                    
-                        }
-                        $this->load->view("users/modify_password",$data);
-        }else{
-            echo "No access token found";
-        }
-    }
+    //                     }
+    //                     $this->load->view("users/modify_password",$data);
+    //     }else{
+    //         echo "No access token found";
+    //     }
+    // }
     
 }

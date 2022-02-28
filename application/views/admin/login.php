@@ -29,7 +29,7 @@
             <a href="#"><?php echo $this->config->item('company_title');  ?></a>
         </div><!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg"><?php echo $this->lang->line('Sign in to your account')?></p>
+            <p class="login-box-msg">Đăng nhập với tài khoản của bạn</p>
             <?php if(isset($error) && $error!=""){
                             echo $error;
                         } ?>
@@ -39,14 +39,14 @@
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required="" />
+                    <input type="password" name="password" class="form-control" placeholder="Mật khẩu" required="" />
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
 
                     <div class="col-xs-12">
                         <button type="submit"
-                            class="btn btn-primary btn-block btn-flat"><?php echo $this->lang->line('Sign In')?></button>
+                            class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
                     </div><!-- /.col -->
                 </div>
             </form>

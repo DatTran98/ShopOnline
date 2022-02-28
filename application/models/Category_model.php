@@ -3,12 +3,10 @@ class Category_model extends CI_Model{
         /* ========== Category========== */
         public function add_category()
         {
-            $slug = url_title($this->input->post('cat_title'), 'dash', TRUE);
             $parentid = $this->input->post("parent");
                         
             $addcat = array(
                             "title"=>$this->input->post("cat_title"),
-                            "slug"=>$slug,
                             "parent"=>$this->input->post("parent"), 
                             "status"=>$this->input->post("cat_status")
                             );
@@ -43,11 +41,9 @@ class Category_model extends CI_Model{
         
         public function edit_category()
         {
-            $slug = url_title($this->input->post('cat_title'), 'dash', TRUE);
             $parentid = $this->input->post("parent");
             $editcat = array(
                             "title"=>$this->input->post("cat_title"),
-                            "slug"=>$slug,
                             "parent"=>$this->input->post("parent"), 
                             "status"=>$this->input->post("cat_status")
                             );

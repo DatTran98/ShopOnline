@@ -14,26 +14,32 @@
     <link rel="stylesheet" href="<?php echo base_url($this->config->item("theme_admin")."/dist/css/frontend.css"); ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     <script src="<?php echo base_url($this->config->item("theme_admin")."/dist/js/frontend.js"); ?>"></script>
 </head>
 
 <body>
+
     <!-- header section starts  -->
     <?php  $this->load->view("frontend/common_header"); ?>
+    <?php    $this->load->library('cart'); ?>
     <!-- header section ends -->
 
     <!-- home section starts  -->
-
     <section class="d-flex align-items-center home" id="home"
         style="background: url(<?php echo base_url("/uploads/sliders/slideshow_1.jpg"); ?>)">
 
         <div class="content">
             <h3>Hoa khô kati</h3>
-            <span> natural & beautiful flowers </span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae laborum ut minus corrupti dolorum dolore
-                assumenda iste voluptate dolorem pariatur.</p>
-            <a href="#products" class="btn-cus">shop now</a>
+            <span> Hoa khô tự nhiên và quà tặng ngày lễ ý nghĩa</span>
+            <p>Đến với vườn hoa khô kati flower, các sẽ được chiêm ngưỡng nhiều loại hoa và tác phẩm hoa khô khác nhau. 
+                    Các nhân viên ở đây cũng sẽ giới thiệu cho du khách kỹ thuật làm hoa khô đặc sắc. 
+                    Đồng thời, khách hàng còn có thể tự mình cắm những bó hoa theo sở thích. </p>
+            <a href="#products" class="btn-cus">Mua ngay</a>
         </div>
     </section>
 
@@ -57,9 +63,9 @@
                 <p>Xin chào, chúng mình là Kati. Không chỉ là một thương hiệu về hoa khô
                     chúng mình còn mong muốn biến những sản phẩm của mình thành những món quà lưu giữ kỉ niệm, những
                     điều ý nghĩa cho các bạn. </p>
-                <p>Bạn có thể tham khảo những mẫu hoa qua website, cửa hàng hoặc liên hệ DALIA để được tư vấn và thiết
+                <p>Bạn có thể tham khảo những mẫu hoa qua website, cửa hàng hoặc liên hệ Kati Flower để được tư vấn và thiết
                     kế mẫu hoa cho riêng mình nhé!</p>
-                <a href="#" class="btn-cus">learn more</a>
+                <a href="<?php echo site_url("shopping/product"); ?>" class="btn-cus">Mua ngay</a>
             </div>
 
         </div>
@@ -123,9 +129,9 @@
                         echo base_url("img/no_img_avaliable.jpg"); 
                     } ?>" alt="">
                     <div class="d-flex icons">
-                        <a href="#products" class="cart-btn"
-                            onclick="return addToCart(<?php echo $product->product_id;?>)">thêm
-                            vào giỏ</a>
+
+                        <button class="cart-btn btn_add_to_cart" value="<?php echo $product->product_id;?>">thêm
+                            vào giỏ</button>
                     </div>
                 </div>
                 <div class="content">
@@ -161,13 +167,14 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti asperiores laboriosam praesentium
-                    enim maiores? Ad repellat voluptates alias facere repudiandae dolor accusamus enim ut odit, aliquam
-                    nesciunt eaque nulla dignissimos.</p>
+                <p>Đến với vườn hoa khô kati flower, các sẽ được chiêm ngưỡng nhiều loại hoa và tác phẩm hoa khô khác nhau. 
+                    Các nhân viên ở đây cũng sẽ giới thiệu cho du khách kỹ thuật làm hoa khô đặc sắc. 
+                    Đồng thời, khách hàng còn có thể tự mình cắm những bó hoa theo sở thích. 
+                    </p>
                 <div class="d-flex user">
                     <img src="<?php echo base_url("img/pic-1.png"); ?>" alt="">
                     <div class="user-info">
-                        <h3>john deo</h3>
+                        <h3>Khách hàng</h3>
                         <span>happy customer</span>
                     </div>
                 </div>
@@ -182,13 +189,11 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti asperiores laboriosam praesentium
-                    enim maiores? Ad repellat voluptates alias facere repudiandae dolor accusamus enim ut odit, aliquam
-                    nesciunt eaque nulla dignissimos.</p>
+                <p>Giao hàng nhanh, hoa đẹp. hướng dẫn bảo quản chu đáo.</p>
                 <div class="user">
                     <img src="<?php echo base_url("img/pic-2.png"); ?>" alt="">
                     <div class="user-info">
-                        <h3>john deo</h3>
+                        <h3>Khách hàng</h3>
                         <span>happy customer</span>
                     </div>
                 </div>
@@ -203,13 +208,11 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti asperiores laboriosam praesentium
-                    enim maiores? Ad repellat voluptates alias facere repudiandae dolor accusamus enim ut odit, aliquam
-                    nesciunt eaque nulla dignissimos.</p>
+                <p>Các nhân viên hướng dẫn tận tình những loại hoa mà du khách yêu cầu và khách sẽ tự mình sáng tạo hoặc nhờ nhân viên ở đây chỉ dẫn cách cắm..</p>
                 <div class="user">
                     <img src="<?php echo base_url("img/pic-3.png"); ?>" alt="">
                     <div class="user-info">
-                        <h3>john deo</h3>
+                        <h3>Khách hàng</h3>
                         <span>happy customer</span>
                     </div>
                 </div>
@@ -251,32 +254,26 @@
     <?php  $this->load->view("frontend/common_footer"); ?>
     <!-- footer section ends -->
 
-    <script >
-    function addToCart($product_id) {
-        amountItem += 1;
-        console.log(amountItem);
-        // $.ajax({
-        //     method: "POST",
-        //     url: "<?php echo site_url("sale/add_to_cart"); ?>",
-        //     data: {
-        //         product_id: $product_id
-        //     }
-        //     success: function (data) {
-        //         alert('THIS WORKED');
-
-        //     },
-        //     error: function () {
-        //         alert('Nah died');
-        //     }
-        // });
-        return false;
-    }
+    <script>
+    $('.btn_add_to_cart').click(function() {
+        let id = $(this).val();
+        $.ajax({
+            url: '<?php echo site_url('shopping/add_to_cart'); ?>',
+            type: 'POST',
+            data: {
+                product_id: id
+            },
+            dataType: 'json',
+            success: function(data) {
+                $('#total_item').text(data);
+            }
+        });
+    });
     </script>
 
     <!-- script for boostrap4-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>

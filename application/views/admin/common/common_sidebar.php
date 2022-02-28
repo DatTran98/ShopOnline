@@ -17,29 +17,7 @@
                         class="label pull-right bg-green"></small>
                 </a>
             </li>
-            <?php if(_get_current_user_type_id($this)==0){ ?>
-            <!--<li class="treeview">
-              <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Common Settings</span>
-                <span class="label label-primary pull-right"></span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> User Settings</a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?php echo site_url("admin/user_types"); ?>"><i class="fa fa-circle-o"></i> User Types</a></li>
-                        
-                    </ul>
-                </li>
-               
-              </ul>
-             </li>-->
-            <!-- <li>
-                <a href="<?php echo site_url("admin/registers"); ?>">
-                    <i class="fa fa-mobile"></i> <span> <?php echo $this->lang->line("App Registers");?></span> <small
-                        class="label pull-right bg-green"></small>
-                </a>
-            </li> -->
+
             <li>
                 <a href="<?php echo site_url("admin/listcategories"); ?>">
                     <i class="fa fa-list"></i> <span> Danh mục sản phẩm</span> <small
@@ -59,27 +37,14 @@
                     <i class="fa fa-slack"></i> <span> Đơn hàng</span> <small class="label pull-right bg-green"></small>
                 </a>
             </li>
-
-
-
-            <!-- <li>
-                <a href="#">
-                    <i class="fa fa-file"></i> <span> <?php echo $this->lang->line("Pages");?></span> <i
-                        class="fa fa-angle-left pull-right"></i>
+            <li>
+                <a href="<?php echo site_url("admin/registers"); ?>">
+                    <i class="fa fa-mobile"></i> <span> Khách hàng</span> <small
+                        class="label pull-right bg-green"></small>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url("admin/allpageapp"); ?>"><i class="fa fa-circle-o"></i>
-                            <?php echo $this->lang->line("List");?></a></li>
+            </li>
 
-                </ul>
-            </li> -->
 
-            <!-- <li>
-                <a href="<?php echo site_url("admin/setting"); ?>">
-                    <i class="fa fa-cogs"></i> <span> <?php echo $this->lang->line("Order Limit Setting");?></span>
-                    <small class="label pull-right bg-green"></small>
-                </a>
-            </li> -->
             <li>
                 <a href="<?php echo site_url("admin/stock"); ?>">
                     <i class="fa fa-sticky-note-o"></i> <span> Tồn kho</span> <small
@@ -93,7 +58,7 @@
                         class="label pull-right bg-green"></small>
                 </a>
             </li>
-
+            <?php if(_get_current_user_type_id($this)==0){ ?>
             <li>
                 <a href="#">
                     <i class="fa fa-users"></i> <span> Người dùng</span> <i class="fa fa-angle-left pull-right"></i>
@@ -106,7 +71,7 @@
 
                 </ul>
             </li>
-
+            <?php  } ?>
             <li>
                 <a href="<?php echo site_url("admin/socity"); ?>">
                     <i class="fa fa-map-signs"></i> <span> Khu vực</span> <small
@@ -134,26 +99,6 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li>
-                <a href="<?php echo site_url("admin/notification"); ?>">
-                    <i class="fa fa-bell"></i> <span> <?php echo $this->lang->line("Notification");?></span> <small
-                        class="label pull-right bg-green"></small>
-                </a>
-            </li> -->
-            <!-- <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-picture-o"></i>
-                    <span> <?php echo $this->lang->line("Slider");?> </span>
-                    <span class="label label-primary pull-right"></span><i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url("admin/listslider"); ?>"><i class="fa fa-circle-o"></i>
-                            <?php echo $this->lang->line("List");?> </a></li>
-                    <li><a href="<?php echo site_url("admin/addslider"); ?>"><i class="fa fa-circle-o"></i>
-                            <?php echo $this->lang->line("Add New");?> </a></li>
-                </ul>
-            </li> -->
-            <?php  } ?>
 
         </ul>
     </section>

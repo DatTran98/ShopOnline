@@ -1,5 +1,5 @@
 <section class="footer">
-
+    <?php if(!$isCustomerPage){ ?>
     <div class="d-flex box-container">
 
         <div class="box">
@@ -13,8 +13,8 @@
 
         <div class="box">
             <h3>truy cập</h3>
-            <a href="#">tài khoản của tôi</a>
-            <a href="#">đơn hàng của tôi</a>
+            <a href="<?php echo site_url("customer") ?>">tài khoản của tôi</a>
+            <a href="<?php echo site_url("customer/orders") ?>">đơn hàng của tôi</a>
         </div>
 
         <div class="box">
@@ -34,6 +34,6 @@
         </div>
 
     </div>
-
+    <?php }?>
     <div class="credit"> Copyright &copy; 2021 <span> Kati Flowers </span> | All rights reserved. </div>
 </section>
