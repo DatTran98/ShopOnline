@@ -88,8 +88,6 @@ class Admin extends MY_Controller {
             $this->load->model("product_model");
             $date = date("Y-m-d");
             $data["today_orders"] = $this->product_model->get_sale_orders(" and sale.on_date < '".$date."' ");
-             $nexday = date('Y-m-d', strtotime(' +1 day'));
-            $data["nextday_orders"] = $this->product_model->get_sale_orders(" and sale.on_date < '".$nexday."' ");
             $this->load->view("admin/dashboard",$data);
         }else{
             redirect("admin");

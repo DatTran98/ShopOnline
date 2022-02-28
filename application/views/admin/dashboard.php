@@ -32,7 +32,7 @@
 
         <section class="content">
            
-          <h3>Đơn đặt hàng hôm nay</h3>
+          <h3>Đơn đặt hàng gần đây</h3>
           <table class="table data_table" >
                 <thead>
                 <tr>
@@ -77,52 +77,6 @@
           }
           ?>
           </tbody>  
-          </table>  
-                    <h3>Đơn đặt hàng ngày kế tiếp</h3>
-          <table class="table data_table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Ngày đặt hàng</th>
-                    <th>Tên khách hàng</th>
-                    <th>Khu vực</th>
-                    <th>Số điện thoạt</th>
-                    <th>Ngày giao hàng</th>
-                    <th>Thời gian giao hàng</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-          <?php
-          foreach($nextday_orders as $order)
-          {
-            ?>
-                <tr>
-                    <td><?php echo $order->sale_id; ?></td>
-                    <td><?php echo date("d-m-Y",strtotime($order->created_at)); ?></td>
-                    <td><?php echo $order->user_fullname; ?></td>
-                    <td><?php echo $order->socity_name; ?></td>
-                    <td><?php echo $order->user_phone; ?></td>
-                    <td><?php echo date("d-m-Y",strtotime($order->on_date)); ?></td>
-                    <td><?php echo date("H:i A", strtotime($order->delivery_time_from))." - ".date("H:i A", strtotime($order->delivery_time_to)); ?></td>
-                    <td><?php echo $order->total_amount; ?></td>
-                    <td><?php if($order->status == 0){
-                        echo "<span class='label label-default'>Chờ xử lý</span>";
-                    }else if($order->status == 1){
-                        echo "<span class='label label-success'>Xác nhận</span>";
-                    }else if($order->status == 2){
-                        echo "<span class='label label-info'>Đã vận chuyển</span>";
-                    }else if($order->status == 3){
-                        echo "<span class='label label-danger'>Hủy</span>";
-                    }  ?></td>
-                    <td><a href="<?php echo site_url("admin/orderdetails/".$order->sale_id); ?>" class="btn btn-sm btn-default">Chi tiết</a></td>
-                </tr>
-            <?php
-          }
-          ?>
-            </tbody>
           </table>  
 
         </section>
