@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<div id="viewport">
     <?php  $this->load->view("frontend/customer_sidebar"); ?>
     <div class="container">
         <div class="main-body">
@@ -158,11 +159,10 @@
         </div>
         <?php  $this->load->view("frontend/common_footer"); ?>
     </div>
-
+    </div>
     <style>
     body {
         background: #F9F7F4;
-        margin-top: 20px;
     }
     </style>
 

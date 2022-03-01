@@ -88,6 +88,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="text-center pt-1 mb-5 pb-1">
                                             <button class="btn btn-block fa-lg gradient-custom-2 mb-3"
                                                 type="submit">Thanh toán</button>
+                                                <a href="<?php echo site_url('shopping/cart');?>"class="btn btn-block btn-secondary fa-lg mb-3"
+                                                >Huỷ</a>
                                         </div>
 
                                     </form>

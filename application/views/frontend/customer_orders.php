@@ -21,47 +21,48 @@
 </head>
 
 <body>
-
-    <section>
+    <div id="viewport">
         <?php  $this->load->view("frontend/customer_sidebar"); ?>
-
-        <div class="content-wrapper">
+        <div id="content" class="content-wrapper">
             <section class="content-header">
                 <h1>Đơn đặt hàng</h1>
             </section>
             <section class="content">
-                <div class="col-xs-12">
-                    <h3>Danh sách đơn hàng</h3>
-                    <?php echo $this->session->flashdata("message"); ?>
-                    <table class="table data_table" id="table_orders">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Ngày đặt hàng</th>
-                                <th>Khu vực</th>
-                                <th>Số điện thoạt</th>
-                                <th>Ngày giao hàng</th>
-                                <th>Thời gian giao hàng</th>
-                                <th>Tổng tiền</th>
-                                <th>Trạng thái</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive project-list">
+                                <h3>Danh sách đơn hàng</h3>
+                                <?php echo $this->session->flashdata("message"); ?>
+                                <table class="table data_table" id="table_orders">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Ngày đặt hàng</th>
+                                            <th>Khu vực</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Ngày giao hàng</th>
+                                            <th>Thời gian giao hàng</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
                             foreach($orders as $order)
                             {
                                 ?>
-                            <tr>
-                                <td><?php echo $order->sale_id; ?></td>
-                                <td><?php echo date("d-m-Y",strtotime($order->created_at)); ?></td>
-                                <td><?php echo $order->socity_name; ?></td>
-                                <td><?php echo $order->user_phone; ?></td>
-                                <td><?php echo date("d-m-Y",strtotime($order->on_date)); ?></td>
-                                <td><?php echo date("H:i A", strtotime($order->delivery_time_from))." - ".date("H:i A", strtotime($order->delivery_time_to)); ?>
-                                </td>
-                                <td><?php echo $order->total_amount; ?></td>
-                                <td><?php if($order->status == 0){
+                                        <tr>
+                                            <td><?php echo $order->sale_id; ?></td>
+                                            <td><?php echo date("d-m-Y",strtotime($order->created_at)); ?></td>
+                                            <td><?php echo $order->socity_name; ?></td>
+                                            <td><?php echo $order->user_phone; ?></td>
+                                            <td><?php echo date("d-m-Y",strtotime($order->on_date)); ?></td>
+                                            <td><?php echo date("H:i A", strtotime($order->delivery_time_from))." - ".date("H:i A", strtotime($order->delivery_time_to)); ?>
+                                            </td>
+                                            <td><?php echo $order->total_amount; ?></td>
+                                            <td><?php if($order->status == 0){
                                 echo "<span class='badge badge-secondary'>Chờ xử lý</span>";
                             }else if($order->status == 1){
                                 echo "<span class='bbadge badge-info'>Đã xác nhận</span>";
@@ -70,31 +71,31 @@
                             }else if($order->status == 3){
                                 echo "<span class='badge badge-danger'>Đã hủy</span>";
                             }  ?></td>
-                                <td><a href="<?php echo site_url("customer/order_details/".$order->sale_id); ?>"
-                                        class="btn btn-sm btn-warning">Chi tiết</a>
-                                        <?php if($order->status == 0){?>
-                                    <a href="<?php echo site_url("customer/cancle_order/".$order->sale_id); ?>"
-                                        class="btn btn-sm btn-danger">hủy</a>
-                                    <?php }  ?>
-                                </td>
-                            </tr>
-                            <?php
+                                            <td><a href="<?php echo site_url("customer/order_details/".$order->sale_id); ?>"
+                                                    class="btn btn-sm btn-warning">Chi tiết</a>
+                                                <?php if($order->status == 0){?>
+                                                <a href="<?php echo site_url("customer/cancle_order/".$order->sale_id); ?>"
+                                                    class="btn btn-sm btn-danger">hủy</a>
+                                                <?php }  ?>
+                                            </td>
+                                        </tr>
+                                        <?php
                             }
                             ?>
-                        </tbody>
-                    </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+            <?php  $this->load->view("frontend/common_footer"); ?>
         </div>
-        <?php  $this->load->view("frontend/common_footer"); ?>
-    </section>
-
+    </div>
     <style>
     body {
-        background:#F9F7F4;
-        margin-top: 20px;
+        background: #F9F7F4;
     }
-
     </style>
     <script>
     $(document).ready(function() {

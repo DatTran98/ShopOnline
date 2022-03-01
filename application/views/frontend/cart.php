@@ -38,7 +38,9 @@
                                             <h3 class="mb-0 text-muted"><?php echo $this->cart->total_items();?> sản
                                                 phẩm</h3>
                                         </div>
-                                        <?php echo $this->session->flashdata("message"); ?>
+                                        <?php if($this->session->flashdata('message')){ ?>
+                                    <p><?php echo $this->session->flashdata('message'); ?></p>
+                                    <?php } ?>
                                         <hr class="my-4">
                                         <?php foreach ($this->cart->contents() as $items): ?>
 

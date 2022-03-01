@@ -20,97 +20,100 @@
 </head>
 
 <body>
-    <?php  $this->load->view("frontend/customer_sidebar"); ?>
-    <div class="container">
-        <div class="main-body">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex flex-column align-items-center text-center">
-                                <img src="<?php if(isset($customer->user_image)) {echo base_url("uploads/profile/".$customer->user_image); }?>"
-                                    alt="Admin" class="rounded-circle p-1 bg-secondary" width="110">
-                                <div class="mt-3">
-                                    <h4><?php echo $customer->user_fullname; ?></h4>
-                                    <p class="text-secondary mb-1"><?php echo $customer->user_email; ?></p>
-                                    <p class="text-muted font-size-sm"><?php echo $customer->user_phone; ?></p>
+    <div id="viewport">
+        <?php  $this->load->view("frontend/customer_sidebar"); ?>
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-4 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="<?php if(isset($customer->user_image)) {echo base_url("uploads/profile/".$customer->user_image); }?>"
+                                        alt="Admin" class="rounded-circle p-1 bg-secondary" width="110">
+                                    <div class="mt-3">
+                                        <h4><?php echo $customer->user_fullname; ?></h4>
+                                        <p class="text-secondary mb-1"><?php echo $customer->user_email; ?></p>
+                                        <p class="text-muted font-size-sm"><?php echo $customer->user_phone; ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr class="my-4">
+                                <hr class="my-4">
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 mt-5">
+
+                        <div class="card">
+                            <?php if(isset($error) && $error!=""){
+                                    echo $error;
+                                    } ?>
+                            <form action="<?php echo site_url("customer/add_address"); ?>" method="post">
+                                <div class="card-body">
+
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Họ tên người nhận</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control user-info" name="receiver_name"
+                                                value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Số điện thoại</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control user-info" name="receiver_mobile"
+                                                value="">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Khu vực</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <select class="select btn" id='select_delivery' name="socity_id">
+                                                <?php foreach($socities as $socity){ ?>
+                                                <option value="<?php echo $socity->socity_id;?>">
+                                                    <?php echo $socity->socity_name;?>
+                                                </option>
+                                                <?php  } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Địa chỉ</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control user-info" name="house_no" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <button type="summit" class="btn btn-primary px-4"
+                                                id="btn-save">Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-
-                    <div class="card">
-                        <?php if(isset($error) && $error!=""){
-                                    echo $error;
-                                    } ?>
-                        <form action="<?php echo site_url("customer/add_address"); ?>" method="post">
-                            <div class="card-body">
-
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Họ tên người nhận</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control user-info" name="receiver_name" value="">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Số điện thoại</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control user-info" name="receiver_mobile"
-                                            value="">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Khu vực</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <select class="select btn" id='select_delivery' name="socity_id">
-                                            <?php foreach($socities as $socity){ ?>
-                                            <option value="<?php echo $socity->socity_id;?>">
-                                                <?php echo $socity->socity_name;?>
-                                            </option>
-                                            <?php  } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Địa chỉ</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control user-info" name="house_no" value="">
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-3"></div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <button type="summit" class="btn btn-primary px-4" id="btn-save">Lưu</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
+            <?php  $this->load->view("frontend/common_footer"); ?>
         </div>
-        <?php  $this->load->view("frontend/common_footer"); ?>
     </div>
-
     <style>
     body {
         background: #F9F7F4;
-        margin-top: 50px;
     }
+    
     </style>
 
     <script>

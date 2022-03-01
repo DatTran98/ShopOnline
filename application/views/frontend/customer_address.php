@@ -22,67 +22,72 @@
 
 <body>
 
-    <section>
+    <div id="viewport">
         <?php  $this->load->view("frontend/customer_sidebar"); ?>
-
-        <div class="content-wrapper">
-            <section class="content">
-                <div class="col-xs-12">
-                <div class="box-header">
-                    <h3>Danh sách địa chỉ</h3>
-                    <?php echo $this->session->flashdata("message"); ?>
-                    <a class="pull-right btn btn-cus mb-2"
-                                    href="<?php echo site_url("customer/add_address"); ?>">Thêm mới</a>
-                    </div>
-                    <table class="table data_table" id="table_address">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Khu vực</th>
-                                <th>Địa chỉ nhà</th>
-                                <th>Tên người nhận</th>
-                                <th>Số điện thoại</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+        <div id="content" class="content-wrapper">
+            <div class="content">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive project-list">
+                                <div class="box-header">
+                                    <h3>Danh sách địa chỉ</h3>
+                                    <?php echo $this->session->flashdata("message"); ?>
+                                    <a class="pull-right btn btn-cus mb-2"
+                                        href="<?php echo site_url("customer/add_address"); ?>">Thêm mới</a>
+                                </div>
+                                <table class="table data_table" id="table_address">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Khu vực</th>
+                                            <th>Địa chỉ nhà</th>
+                                            <th>Tên người nhận</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
                         foreach($addresses as $address)
                         {
                             ?>
-                            <tr>
-                                <td><?php echo $address->location_id; ?></td>
-                                <td><?php echo $address->socity_name; ?></td>
-                                <td><?php echo $address->house_no; ?></td>
-                                <td><?php echo $address->receiver_name; ?></td>
-                                <td><?php echo $address->receiver_mobile; ?></td>
-                                <td class="d-flex justify-content-center"><a
-                                        href="<?php echo site_url("customer/edit_address/".$address->location_id); ?>"
-                                        class="btn btn-sm btn-secondary">Sửa</a>
+                                        <tr>
+                                            <td><?php echo $address->location_id; ?></td>
+                                            <td><?php echo $address->socity_name; ?></td>
+                                            <td><?php echo $address->house_no; ?></td>
+                                            <td><?php echo $address->receiver_name; ?></td>
+                                            <td><?php echo $address->receiver_mobile; ?></td>
+                                            <td class="d-flex justify-content-center"><a
+                                                    href="<?php echo site_url("customer/edit_address/".$address->location_id); ?>"
+                                                    class="btn btn-sm btn-secondary">Sửa</a>
 
-                                    <form method="post" id="form_delete_address" action="<?php echo site_url("customer/delete_address");?>">
-                                        <input type="hidden" value="<?php echo $address->location_id?>"
-                                            name="location_id">
-                                        <button type="button" class="btn btn-sm btn-danger btn_delete_address" >Xóa</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
+                                                <form method="post" id="form_delete_address"
+                                                    action="<?php echo site_url("customer/delete_address");?>">
+                                                    <input type="hidden" value="<?php echo $address->location_id?>"
+                                                        name="location_id">
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-danger btn_delete_address">Xóa</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <?php
                         }
                         ?>
-                        </tbody>
-                    </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+            <?php  $this->load->view("frontend/common_footer"); ?>
         </div>
-        <?php  $this->load->view("frontend/common_footer"); ?>
-    </section>
+    </div>
     <style>
     body {
-        background:#F9F7F4;
-        margin-top: 20px;
+        background: #F9F7F4;
     }
-
     </style>
     <script>
     $(document).ready(function() {
@@ -91,8 +96,8 @@
                 [1, "asc"]
             ]
         });
-        $('.btn_delete_address').on('click', function(){
-            if(confirm('Bạn có chắc muốn xóa địa chỉ này không?')){
+        $('.btn_delete_address').on('click', function() {
+            if (confirm('Bạn có chắc muốn xóa địa chỉ này không?')) {
                 $('#form_delete_address').submit();
             }
         });

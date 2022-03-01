@@ -20,79 +20,83 @@
 </head>
 
 <body>
-    <?php  $this->load->view("frontend/customer_sidebar"); ?>
-    <div class="container">
-        <div class="main-body">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="card">
-                        <?php if(isset($error) && $error!=""){
+    <div id="viewport">
+        <?php  $this->load->view("frontend/customer_sidebar"); ?>
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <?php if(isset($error) && $error!=""){
                                     echo $error;
                                     } ?>
-                        <form action="<?php echo site_url("customer/update_address"); ?>" method="post">
-                            <div class="card-body">
-                            <input type="hidden" class="form-control user-info" name="location_id" value="<?php echo $location->location_id;?>">
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Họ tên người nhận</h6>
+                            <form action="<?php echo site_url("customer/update_address"); ?>" method="post">
+                                <div class="card-body">
+                                    <input type="hidden" class="form-control user-info" name="location_id"
+                                        value="<?php echo $location->location_id;?>">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Họ tên người nhận</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control user-info" name="receiver_name"
+                                                value="<?php echo $location->receiver_name;?>">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control user-info" name="receiver_name" value="<?php echo $location->receiver_name;?>">
-                                    </div>
-                                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Số điện thoại</h6>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Số điện thoại</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control user-info" name="receiver_mobile"
+                                                value="<?php echo $location->receiver_mobile;?>">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control user-info" name="receiver_mobile"
-                                            value="<?php echo $location->receiver_mobile;?>">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Khu vực</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <select class="select btn" id='select_delivery' name="socity_id">
+                                                <?php foreach($socities as $socity){ ?>
+                                                <option value="<?php echo $socity->socity_id;?>"
+                                                    <?php if($socity->socity_id == $location->socity_id) echo "selected";?>>
+                                                    <?php echo $socity->socity_name;?>
+                                                </option>
+                                                <?php  } ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Khu vực</h6>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Địa chỉ</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control user-info" name="house_no"
+                                                value="<?php echo $location->house_no;?>">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <select class="select btn" id='select_delivery' name="socity_id">
-                                            <?php foreach($socities as $socity){ ?>
-                                            <option value="<?php echo $socity->socity_id;?>" <?php if($socity->socity_id == $location->socity_id) echo "selected";?>>
-                                                <?php echo $socity->socity_name;?>
-                                            </option>
-                                            <?php  } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Địa chỉ</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control user-info" name="house_no" value="<?php echo $location->house_no;?>">
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-sm-3"></div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <button type="summit" class="btn btn-primary px-4" id="btn-save">Lưu</button>
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <button type="summit" class="btn btn-primary px-4"
+                                                id="btn-save">Lưu</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <?php  $this->load->view("frontend/common_footer"); ?>
         </div>
-        <?php  $this->load->view("frontend/common_footer"); ?>
     </div>
-
     <style>
     body {
         background: #F9F7F4;
-        margin-top: 50px;
     }
     </style>
 
