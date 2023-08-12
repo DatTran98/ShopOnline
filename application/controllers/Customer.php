@@ -79,7 +79,7 @@ class Customer extends MY_Controller {
                 if ($q->num_rows() > 0)
                 {
                     $row = $q->row(); 
-                    if($row->user_status == "0")
+                    if($row->status == "0")
                     {
                         $data["error"] = '<div class="alert alert-danger alert-dismissible" role="alert">
                               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

@@ -30,7 +30,6 @@
             <a href="#">+123-456-7890</a>
             <a href="#">katiflower@gmail.com</a>
             <a href="#">số 8, ngõ 117/69 thái hà - đống đa - hà nội</a>
-            <img src="images/payment.png" alt="">
         </div>
 
     </div>

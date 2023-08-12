@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:88/katikati/';
+$config['base_url'] = 'https://shoponlinedryflower.000webhostapp.com/';
 $config['theme_admin'] = "theme/admin";
 
  $config['currency'] = ' vnd';
